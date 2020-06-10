@@ -3,6 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
+var uri="mongodb+srv://usuario1:YhN99lfwYcpT3rg2@cluster0-xfbkz.mongodb.net/proyecto?retryWrites=true&w=majority";
+mongoose.connect(uri, {useNewUrlParser: true}).then(
+  () => { console.log("Conectado a mongoDB") }
+);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
