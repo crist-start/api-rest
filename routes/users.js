@@ -4,7 +4,7 @@ const Usuario = require('../collection/dinosaurios');
 
 
 /* GET users listing. */
-router.get('/', function(req, res) {
+router.get('/dinos', function(req, res) {
 
     Usuario.find({})
         .exec((err, dinosaurios) => {
@@ -30,7 +30,7 @@ router.get('/', function(req, res) {
 });
 
 
-router.post('/', (req, res) => {
+router.post('/dinos', (req, res) => {
 
     let body = req.body;
     let usuario = new Usuario({
