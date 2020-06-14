@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
 var dinoSchema = schema({
+    id: Number,
     nombre: String,
     especie: String,
     peso: Number,

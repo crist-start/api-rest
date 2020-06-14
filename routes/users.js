@@ -34,13 +34,14 @@ router.post('/dinos', (req, res) => {
 
     let body = req.body;
     let usuario = new Usuario({
+        id: body.id,
         nombre: body.nombre,
         especie: body.especie,
         peso: body.peso,
-        tamaño: body.tam,
-        carnivoro: body.esCarnivoro,
+        tam: body.tamaño,
+        esCarnivoro: body.carnivoro,
         color: body.color,
-        patas: body.numPatas
+        numPatas: body.patas
 
 
     });
