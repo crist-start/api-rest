@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>actualizar datos de dinisaurio</title>
+    <meta content="">
+    <style></style>
+  </head>
+  <body>
+    <form>
+        <select id="dinos" name="dinos">
+          {{#each dinosaurios}}
+            <option value="{{nombre}}">{{nombre}}</option>
+          {{/each}}
+        </select><br>
+        <input type="radio" id="nombre" name="campo" value="nombre">
+        <label for="nombre">nombre</label><input type="text" id="nombre" name="nombre" value=""><br>
+        <input type="radio" id="especie" name="campo" value="especie">
+        <label for="especie">especie</label><input type="text" id="especie" name="especie" value=""><br>
+        <input type="radio" id="peso" name="campo" value="peso">
+        <label for="peso">peso</label><input type="text" id="peso" name="peso" value=""><br>
+        <input type="radio" id="tam" name="campo" value="tam">
+        <label for="tam">tamaño</label><input type="text" id="tam" name="tam" value=""><br>
+        <input type="radio" id="esCarnivoro" name="campo" value="esCarnivoro">
+        <label for="esCarnivoro">esCarnivoro</label><input type="text" id="esCarnivoro" name="esCarnivoro" value=""><br>
+        <input type="radio" id="color" name="campo" value="color">
+        <label for="color">color</label><input type="text" id="color" name="color" value=""><br>
+        <input type="radio" id="numPatas" name="campo" value="numPatas">
+        <label for="numPatas">numero de patas</label><input type="text" id="numPatas" name="numPatas" value=""><br>
+        <button type="button" onclick="alert('estas seguro?')">Insertar</button>
+    </form>
+  </body>
+</html>

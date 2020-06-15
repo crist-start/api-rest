@@ -6,7 +6,8 @@ router.patch('/',function (req,res,next) {
   res.status(405).json({mensaje:"accion no permitida"});
 });
 router.patch('/:id',function (req,res,next) {
-  dino.findOneAndUpdate({nombre:req.params.id},{especie:req.body.especie},{new:true},function (err,dato) {
+  campo=req.params.campo
+  dino.findOneAndUpdate({nombre:req.params.id},{tam:req.body.dato},{new:true},function (err,dato) {
     if(dato==null){
       res.status(404).json({mensaje:"dato no encontrado"});
     }else{
