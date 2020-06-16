@@ -71,6 +71,27 @@ router.post('/dinos', (req, res) => {
 
 });
 
-
+router.delete('/', (req, res) => {
+    res.status(405).json({message: 'No se permite'})
+ });
+ 
+ router.delete('/dinos/:id', (req, res) => {
+     let id = req.params.id;
+     Usuario.findByIdAndRemove(id, (err, dinoBorrado) => {
+         if (!dinoBorrado) {
+             return res.status(400).json({
+                 ok: false,
+                 err: {
+                     message: 'el dinosaurio no se encontro encontrado'
+                 }
+             })
+         }
+         res.json({
+             ok: true,
+             dino: dinoBorrado
+         })
+     })
+ })
+ 
 
 module.exports = router;
