@@ -15,3 +15,9 @@ a {
 .color {
     color: red;
 }
+
+.site-footer {
+    background-color: #000000;
+    margin: 0;
+    padding: 3rem 0;
+}

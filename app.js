@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+const hbs = require('hbs');
 var uri = "mongodb+srv://usuario1:YhN99lfwYcpT3rg2@cluster0-xfbkz.mongodb.net/proyecto?retryWrites=true&w=majority";
 mongoose.connect(uri, { useNewUrlParser: true }).then(
     () => { console.log("Conectado a mongoDB") }
@@ -11,8 +12,8 @@ mongoose.connect(uri, { useNewUrlParser: true }).then(
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var patchRouter=require('./routes/patch/patch');
-var frontpatchRouter=require('./routes/patch/front_patch');
+var patchRouter = require('./routes/patch/patch');
+var frontpatchRouter = require('./routes/patch/front_patch');
 var vista = require('./routes/vistaDinos');
 var app = express();
 
@@ -20,12 +21,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'jade');
 app.set('view engine', 'hbs');
-app.get('/', (req, res) => {
-
-    res.render('index');
-
-
-})
+hbs.registerPartials(__dirname + '/views/parciales');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -33,10 +29,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/update',patchRouter);
-app.use('/actualizar',frontpatchRouter);
+app.use('/update', patchRouter);
+app.use('/actualizar', frontpatchRouter);
 app.use('/ver', vista);
 
 // catch 404 and forward to error handler
