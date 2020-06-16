@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VER DINOS</title>
    <!-- CSS only -->
-  
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <link rel="stylesheet" href="/stylesheets/style.css">
 <!-- JS, Popper.js, and jQuery -->
@@ -19,8 +19,8 @@
 <div class="container-fluid">
     <div class="row row-cols-4">
       {{#each dinosaurios}}
-    
-      
+
+
 
       <div class="card" style="width: 18rem;">
         <img src="https://source.unsplash.com/PVOeUnReeOs/300x300" class="card-img-top" alt="...">
@@ -37,9 +37,15 @@
           <li class="list-group-item">PATAS:{{numPatas}}</li>
         </ul>
         <div class="card-body">
-          <a href=""> <button type="button" class="btn btn-outline-danger">Editar Dinosaurio</button></a>
-         <a href=""> <button type="button" class="btn btn-outline-danger">Borrar Dinosaurio</button></a>
-         
+
+                    <form action="/dino/borrar/{{_id}}?_method=DELETE" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-outline-danger" type="submit">Borrar Dinosaurio</button>
+                    </form>
+
+
+
+                    <a href=""> <button type="button" class="btn btn-outline-danger">Editar Dinosaurio</button></a>
         </div>
       </div>
       {{/each}}
@@ -52,10 +58,10 @@
 
 
   </div>
-  
-  
-    
 
-    
+
+
+
+
 </body>
 </html>
