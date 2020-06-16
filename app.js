@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+const methodOverride = require('method-override');
 const hbs = require('hbs');
 var uri = "mongodb+srv://usuario1:YhN99lfwYcpT3rg2@cluster0-xfbkz.mongodb.net/proyecto?retryWrites=true&w=majority";
 mongoose.connect(uri, { useNewUrlParser: true }).then(
@@ -15,7 +16,7 @@ var usersRouter = require('./routes/users');
 var patchRouter = require('./routes/patch/patch');
 var frontpatchRouter = require('./routes/patch/front_patch');
 var vista = require('./routes/vistaDinos');
-var vistapost=require('./routes/vista_post');
+var vistapost = require('./routes/vista_post');
 var app = express();
 
 // view engine setup
@@ -23,6 +24,11 @@ app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'jade');
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/parciales');
+//middelewares
+app.use(express.urlencoded({ extended: false })); //se enviaa un formulario recibe datos solo
+//datos no "imagen extendende false"
+app.use(methodOverride('_method')); //a travez de que propiedad se envia los datos put,delete
+//no solamnete get y post
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -37,7 +43,7 @@ app.use('/users', usersRouter);
 app.use('/update', patchRouter);
 app.use('/actualizar', frontpatchRouter);
 app.use('/ver', vista);
-app.use('/dinosaurios',vistapost);
+app.use('/dinosaurios', vistapost);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
