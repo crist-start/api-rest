@@ -61,6 +61,22 @@ router.get('/dinos/rango', function(req, res) {
 
 
 });
+router.get('/dinos/:iduno', (req, res) => {
+    let iduno = req.params.iduno
+    Usuario.findById(iduno, (err, dino) => {
+        if (err) return res.status(500).json({ //error interno,servidor
+            message: 'error al hacer la peticion'
+        })
+        if (!dino) return res.status(404).json({
+                message: 'no se encontro tu dinosaurio'
+            }) //el servidor no pudo encontrar el contenido solicitas
+
+        res.status(200).json(dino); //se ha encontrado correctamente
+
+    })
+
+
+})
 
 
 
