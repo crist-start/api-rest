@@ -5,27 +5,35 @@
     <style></style>
   </head>
   <body>
-    <form>
-        <select id="dinos" name="dinos">
+    <form name="formUpdate" method="post">
+        <select id="idDino" name="id" onclick="actualiza()">
           {{#each dinosaurios}}
-            <option value="{{nombre}}">{{nombre}}</option>
+            <option value="{{id}}">{{nombre}}</option>
           {{/each}}
         </select><br>
         <input type="radio" id="nombre" name="campo" value="nombre">
-        <label for="nombre">nombre</label><input type="text" id="nombre" name="nombre" value=""><br>
+        <label for="nombre">nombre</label><br>
         <input type="radio" id="especie" name="campo" value="especie">
-        <label for="especie">especie</label><input type="text" id="especie" name="especie" value=""><br>
+        <label for="especie">especie</label><br>
         <input type="radio" id="peso" name="campo" value="peso">
-        <label for="peso">peso</label><input type="text" id="peso" name="peso" value=""><br>
+        <label for="peso">peso</label><br>
         <input type="radio" id="tam" name="campo" value="tam">
-        <label for="tam">tamaño</label><input type="text" id="tam" name="tam" value=""><br>
+        <label for="tam">tamaño</label><br>
         <input type="radio" id="esCarnivoro" name="campo" value="esCarnivoro">
-        <label for="esCarnivoro">esCarnivoro</label><input type="text" id="esCarnivoro" name="esCarnivoro" value=""><br>
+        <label for="esCarnivoro">esCarnivoro</label><br>
         <input type="radio" id="color" name="campo" value="color">
-        <label for="color">color</label><input type="text" id="color" name="color" value=""><br>
+        <label for="color">color</label><br>
         <input type="radio" id="numPatas" name="campo" value="numPatas">
-        <label for="numPatas">numero de patas</label><input type="text" id="numPatas" name="numPatas" value=""><br>
-        <button type="button" onclick="alert('estas seguro?')">Insertar</button>
+        <label for="numPatas">numero de patas</label><br>
+        <input type="text" id="dato" name="dato" value="dato"></br>
+        <input type="submit" name="submit" value="actualizar">
     </form>
+    <script>
+
+    function actualiza(){
+      var cod = document.getElementById("idDino").value;
+      document.formUpdate.action = "http://localhost:3000/update/"+cod+"?_method=PATCH";
+    }
+    </script>
   </body>
 </html>
