@@ -7,17 +7,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../stylesheets/u.css">
+    <script type="text/javascript" src="../javascripts/script.js"></script>
     <script type="text/javascript">
-      function enableText() {
-        var datos=document.getElementsByName('dato');
-        for (var i = 0; i < datos.length; i++) {
-          if (datos[i].id==document.campos.campo.value) {
-            datos[i].disabled=false;
-          } else {
-            datos[i].disabled=true;
-          }
-        }
-      }
+    window.onload=function () {
+      var a=document.getElementById('esCarnivoro');
+      a.value="{{esCarnivoro}}";
+    }
     </script>
     <title>Actualizar dato de {{nombre}}</title>
   </head>
@@ -26,10 +21,10 @@
       <h1>Actualizar dinosaurio {{nombre}}</h1>
       * solo se puede cambiar un campo
     </div>
-    <form class="p-5" name="campos" action="http://localhost:3000/update/{{_id}}?_method=PATCH" method="POST">
+    <form class="p-5" name="formUpdate" action="http://localhost:3000/update/{{_id}}?_method=PATCH" method="POST">
       <div class="form-group px-5">
         <input type="text" class="form-control" id="nombre" name="dato" value="{{nombre}}" disabled>
-        <input type="radio" id="r1" name="campo" value="nombre" onclick="enableText()">nombre
+        <input type="radio" id="r1" name="campo" value="nombre" onclick="enableText()" required>nombre
       </div>
       <div class="form-group px-5">
         <input type="text" class="form-control" id="especie" name="dato" value="{{especie}}" disabled>
@@ -43,7 +38,7 @@
         <input type="text" class="form-control" id="tam" name="dato" value="{{tam}}" disabled>
         <input type="radio" id="r4" name="campo" value="tam" onclick="enableText()">tamaño
       </div>
-      <div class="form-group px-5">
+      <div id="carn" class="form-group px-5">
         <select class="form-control" id="esCarnivoro" name="dato" disabled>
           <option value="false">falso</option>
           <option value="true">verdadero</option>

@@ -2,6 +2,7 @@ form{
 	background-image:url("https://s.yimg.com/ny/api/res/1.2/3_nq60YA1P3MnVVNARCDPw--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9NzU0O2g9NTI0/http://media.zenfs.com/en/homerun/feed_manager_auto_publish_494/13b2600381ab0b7060a0617f899d56a6");
 	background-position: center;
 	background-size: cover;
+	height: 100%;
 }
 
 body{
