@@ -1,36 +1,64 @@
-<form name="campos" action="http://localhost:3000/update/{{_id}}?_method=PATCH" method="POST">
-  <input type="text" id="nombre" name="dato" value="{{nombre}}" disabled>
-  <input type="radio" id="r1" name="campo" value="nombre" onclick="enableText()">nombre
-  <br>
-  <input type="text" id="especie" name="dato" value="{{especie}}" disabled>
-  <input type="radio" id="r2" name="campo" value="especie" onclick="enableText()">especie
-  <br>
-  <input type="text" id="peso" name="dato" value="{{peso}}" disabled>
-  <input type="radio" id="r3" name="campo" value="peso" onclick="enableText()">peso
-  <br>
-  <input type="text" id="tam" name="dato" value="{{tam}}" disabled>
-  <input type="radio" id="r4" name="campo" value="tam" onclick="enableText()">tamaño
-  <br>
-  <input type="text" id="esCarnivoro" name="dato" value="{{esCarnivoro}}" disabled>
-  <input type="radio" id="r5" name="campo" value="esCarnivoro" onclick="enableText()">esCarnivoro
-  <br>
-  <input type="text" id="color" name="dato" value="{{color}}" disabled>
-  <input type="radio" id="r6" name="campo" value="color" onclick="enableText()">color
-  <br>
-  <input type="text" id="numPatas" name="dato" value="{{numPatas}}" disabled>
-  <input type="radio" id="r7 " name="campo" value="numPatas" onclick="enableText()">numero de patas
-  <br>
-  <input type="submit" name="sumbit" value="actualizar">
-  <script type="text/javascript">
-    function enableText() {
-      var datos=document.getElementsByName('dato');
-      for (var i = 0; i < datos.length; i++) {
-        if (datos[i].id==document.campos.campo.value) {
-          datos[i].disabled=false;
-        } else {
-          datos[i].disabled=true;
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/u.css">
+    <script type="text/javascript">
+      function enableText() {
+        var datos=document.getElementsByName('dato');
+        for (var i = 0; i < datos.length; i++) {
+          if (datos[i].id==document.campos.campo.value) {
+            datos[i].disabled=false;
+          } else {
+            datos[i].disabled=true;
+          }
         }
       }
-    }
-  </script>
-</form>
+    </script>
+    <title>Actualizar dato de {{nombre}}</title>
+  </head>
+  <body>
+    <div class="p-5 bg-primary">
+      <h1>Actualizar dinosaurio {{nombre}}</h1>
+      * solo se puede cambiar un campo
+    </div>
+    <form class="p-5" name="campos" action="http://localhost:3000/update/{{_id}}?_method=PATCH" method="POST">
+      <div class="form-group px-5">
+        <input type="text" class="form-control" id="nombre" name="dato" value="{{nombre}}" disabled>
+        <input type="radio" id="r1" name="campo" value="nombre" onclick="enableText()">nombre
+      </div>
+      <div class="form-group px-5">
+        <input type="text" class="form-control" id="especie" name="dato" value="{{especie}}" disabled>
+        <input type="radio" id="r2" name="campo" value="especie" onclick="enableText()">especie
+      </div>
+      <div class="form-group px-5">
+        <input type="text" class="form-control" id="peso" name="dato" value="{{peso}}" disabled>
+        <input type="radio" id="r3" name="campo" value="peso" onclick="enableText()">peso
+      </div>
+      <div class="form-group px-5">
+        <input type="text" class="form-control" id="tam" name="dato" value="{{tam}}" disabled>
+        <input type="radio" id="r4" name="campo" value="tam" onclick="enableText()">tamaño
+      </div>
+      <div class="form-group px-5">
+        <select class="form-control" id="esCarnivoro" name="dato" disabled>
+          <option value="false">falso</option>
+          <option value="true">verdadero</option>
+        </select>
+        <input type="radio" id="r5" name="campo" value="esCarnivoro" onclick="enableText()">esCarnivoro
+      </div>
+      <div class="form-group px-5">
+        <input type="text" class="form-control" id="color" name="dato" value="{{color}}" disabled>
+        <input type="radio" id="r6" name="campo" value="color" onclick="enableText()">color
+      </div>
+      <div class="form-group px-5">
+        <input type="text" class="form-control" id="numPatas" name="dato" value="{{numPatas}}" disabled>
+        <input type="radio" id="r7 " name="campo" value="numPatas" onclick="enableText()">numero de patas
+      </div>
+      <input type="submit" class="btn btn-primary btn-lg mx-auto" name="sumbit" value="actualizar">
+    </form>
+  </body>
+</html>

@@ -1,39 +1,73 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
   <head>
-    <title>actualizar datos de dinisaurio</title>
-    <meta content="">
-    <style></style>
-  </head>
-  <body>
-    <form name="formUpdate" method="post">
-        <select id="idDino" name="id" onclick="actualiza()">
-          {{#each dinosaurios}}
-            <option value="{{_id}}">{{nombre}}</option>
-          {{/each}}
-        </select><br>
-        <input type="radio" id="nombre" name="campo" value="nombre">
-        <label for="nombre">nombre</label><br>
-        <input type="radio" id="especie" name="campo" value="especie">
-        <label for="especie">especie</label><br>
-        <input type="radio" id="peso" name="campo" value="peso">
-        <label for="peso">peso</label><br>
-        <input type="radio" id="tam" name="campo" value="tam">
-        <label for="tam">tamaño</label><br>
-        <input type="radio" id="esCarnivoro" name="campo" value="esCarnivoro">
-        <label for="esCarnivoro">esCarnivoro</label><br>
-        <input type="radio" id="color" name="campo" value="color">
-        <label for="color">color</label><br>
-        <input type="radio" id="numPatas" name="campo" value="numPatas">
-        <label for="numPatas">numero de patas</label><br>
-        <input type="text" id="dato" name="dato" value=""></br>
-        <input type="submit" name="submit" value="actualizar">
-    </form>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/u.css">
     <script>
 
     function actualiza(){
       var cod = document.getElementById("idDino").value;
-      document.formUpdate.action = "http://localhost:3000/update/"+cod+"?_method=PATCH";
+      document.formUpdate.action = "/update/"+cod+"?_method=PATCH";
     }
     </script>
+    <title>Actualizar dato de dinosaurios</title>
+  </head>
+  <body>
+    <div class="p-5 bg-primary">
+      <h1>Actualizar dinosaurio</h1>
+      <h3>Selecione el nombre de un dinosaurio seleccione un campo y coloque el valor</h3>
+      * solo se puede cambiar un campo
+    </div>
+    <form name="formUpdate" method="post">
+        <div class="px-5">
+          <select class="form-control" id="idDino" name="id" onclick="actualiza()">
+            {{#each dinosaurios}}
+              <option value="{{_id}}">{{nombre}}</option>
+            {{/each}}
+          </select><br>
+        </div>
+        <div class="row p-5">
+          <div class="form-group col-4 m-3">
+            <input class="form-check-input" type="radio" id="nombre" name="campo" value="nombre">
+            <label class="form-check-label" for="nombre">Nombre</label>
+            <input class="form-control" type="text" id="dato" name="dato" value="">
+          </div>
+          <div class="form-group col-4 m-3">
+            <input class="form-check-input" type="radio" id="especie" name="campo" value="especie">
+            <label class="form-check-label" for="especie">Especie</label>
+            <input class="form-control" type="text" id="dato" name="dato" value="">
+          </div>
+          <div class="form-group col-4 m-3">
+            <input class="form-check-input" type="radio" id="peso" name="campo" value="peso">
+            <label class="form-check-label" for="peso">Peso</label>
+            <input class="form-control" type="text" id="dato" name="dato" value="">
+          </div>
+          <div class="form-group col-4 m-3">
+            <input class="form-check-input" type="radio" id="tam" name="campo" value="tam">
+            <label class="form-check-label" for="tam">Tamaño</label>
+            <input class="form-control" type="text" id="dato" name="dato" value="">
+          </div>
+          <div class="form-group col-4 m-3">
+            <input class="form-check-input" type="radio" id="esCarnivoro" name="campo" value="esCarnivoro">
+            <label class="form-check-label" for="esCarnivoro">Carnivoro</label>
+            <input class="form-control" type="text" id="dato" name="dato" value="">
+          </div>
+          <div class="form-group col-4 m-3">
+            <input class="form-check-input" type="radio" id="color" name="campo" value="color">
+            <label class="form-check-label" for="color">Color</label>
+            <input class="form-control" type="text" id="dato" name="dato" value="">
+          </div>
+          <div class="form-group col-4 m-3">
+            <input class="form-check-input" type="radio" id="numPatas" name="campo" value="numPatas">
+            <label class="form-check-label" for="numPatas">Numero de patas</label>
+            <input class="form-control" type="text" id="dato" name="dato" value="">
+          </div>
+        </div>
+        <input type="submit" class="btn btn-primary btn-lg" name="submit" value="actualizar">
+    </form>
   </body>
 </html>
