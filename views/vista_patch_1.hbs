@@ -1,17 +1,36 @@
-<form class="" action="http://localhost:3000/update/{{id}}?_method=PATCH" method="POST">
-  <input type="text" name="nombre" value="{{nombre}}">
-  <input type="radio" id="nombre" name="campo" value="nombre">nombre<br>
-  <input type="text" name="especie" value="{{especie}}">
-  <input type="radio" id="especie" name="campo" value="especie">especie<br>
-  <input type="text" name="peso" value="{{peso}}">
-  <input type="radio" id="peso" name="campo" value="peso">peso<br>
-  <input type="text" name="tam" value="{{tam}}">
-  <input type="radio" id="tam" name="campo" value="tam">tamaño<br>
-  <input type="text" name="esCarnivoro" value="{{esCarnivoro}}">
-  <input type="radio" id="esCarnivoro" name="campo" value="esCarnivoro">esCarnivoro<br>
-  <input type="text" name="color" value="{{color}}">
-  <input type="radio" id="color" name="campo" value="color">color<br>
-  <input type="text" name="numPatas" value="{{numPatas}}">
-  <input type="radio" id="numPatas" name="campo" value="numPatas">numero de patas<br>
+<form name="campos" action="http://localhost:3000/update/{{_id}}?_method=PATCH" method="POST">
+  <input type="text" id="nombre" name="dato" value="{{nombre}}" disabled>
+  <input type="radio" id="r1" name="campo" value="nombre" onclick="enableText()">nombre
+  <br>
+  <input type="text" id="especie" name="dato" value="{{especie}}" disabled>
+  <input type="radio" id="r2" name="campo" value="especie" onclick="enableText()">especie
+  <br>
+  <input type="text" id="peso" name="dato" value="{{peso}}" disabled>
+  <input type="radio" id="r3" name="campo" value="peso" onclick="enableText()">peso
+  <br>
+  <input type="text" id="tam" name="dato" value="{{tam}}" disabled>
+  <input type="radio" id="r4" name="campo" value="tam" onclick="enableText()">tamaño
+  <br>
+  <input type="text" id="esCarnivoro" name="dato" value="{{esCarnivoro}}" disabled>
+  <input type="radio" id="r5" name="campo" value="esCarnivoro" onclick="enableText()">esCarnivoro
+  <br>
+  <input type="text" id="color" name="dato" value="{{color}}" disabled>
+  <input type="radio" id="r6" name="campo" value="color" onclick="enableText()">color
+  <br>
+  <input type="text" id="numPatas" name="dato" value="{{numPatas}}" disabled>
+  <input type="radio" id="r7 " name="campo" value="numPatas" onclick="enableText()">numero de patas
+  <br>
   <input type="submit" name="sumbit" value="actualizar">
+  <script type="text/javascript">
+    function enableText() {
+      var datos=document.getElementsByName('dato');
+      for (var i = 0; i < datos.length; i++) {
+        if (datos[i].id==document.campos.campo.value) {
+          datos[i].disabled=false;
+        } else {
+          datos[i].disabled=true;
+        }
+      }
+    }
+  </script>
 </form>
