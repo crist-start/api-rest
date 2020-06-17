@@ -7,64 +7,67 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../stylesheets/u.css">
-    <script>
-
-    function actualiza(){
-      var cod = document.getElementById("idDino").value;
-      document.formUpdate.action = "/update/"+cod+"?_method=PATCH";
-    }
+    <script  type="text/javascript" src="../javascripts/script.js"></script>
+    <script type="text/javascript">
+    window.onload=function () {
+      document.formUpdate.action="/update/0?_method=PATCH";
+    };
     </script>
     <title>Actualizar dato de dinosaurios</title>
   </head>
   <body>
     <div class="p-5 bg-primary">
       <h1>Actualizar dinosaurio</h1>
-      <h3>Selecione el nombre de un dinosaurio seleccione un campo y coloque el valor</h3>
+      <h3>Selecione el nombre de un dinosaurio, seleccione un campo y coloque el valor</h3>
       * solo se puede cambiar un campo
     </div>
     <form name="formUpdate" method="post">
-        <div class="px-5">
-          <select class="form-control" id="idDino" name="id" onclick="actualiza()">
+        <div class="p-4">
+          <select class="form-control" id="idDino" name="id" onclick="actualiza()" required>
+            <option value="" selected>Seleccione 1 dino</option>
             {{#each dinosaurios}}
               <option value="{{_id}}">{{nombre}}</option>
             {{/each}}
-          </select><br>
+          </select>
         </div>
-        <div class="row p-5">
-          <div class="form-group col-4 m-3">
-            <input class="form-check-input" type="radio" id="nombre" name="campo" value="nombre">
+        <div class="row p-3">
+          <div class="form-group col-5 m-3">
+            <input class="form-check-input" type="radio" id="nombre" name="campo" value="nombre" onclick="enableText()" required>
             <label class="form-check-label" for="nombre">Nombre</label>
-            <input class="form-control" type="text" id="dato" name="dato" value="">
+            <input class="form-control" type="text" id="nombre" name="dato" value="" disabled>
           </div>
-          <div class="form-group col-4 m-3">
-            <input class="form-check-input" type="radio" id="especie" name="campo" value="especie">
+          <div class="form-group col-5 m-3">
+            <input class="form-check-input" type="radio" id="especie" name="campo" value="especie" onclick="enableText()">
             <label class="form-check-label" for="especie">Especie</label>
-            <input class="form-control" type="text" id="dato" name="dato" value="">
+            <input class="form-control" type="text" id="especie" name="dato" value="" disabled>
           </div>
-          <div class="form-group col-4 m-3">
-            <input class="form-check-input" type="radio" id="peso" name="campo" value="peso">
+          <div class="form-group col-5 m-3">
+            <input class="form-check-input" type="radio" id="peso" name="campo" value="peso" onclick="enableText()">
             <label class="form-check-label" for="peso">Peso</label>
-            <input class="form-control" type="text" id="dato" name="dato" value="">
+            <input class="form-control" type="text" id="peso" name="dato" value="" disabled>
           </div>
-          <div class="form-group col-4 m-3">
-            <input class="form-check-input" type="radio" id="tam" name="campo" value="tam">
+          <div class="form-group col-5 m-3">
+            <input class="form-check-input" type="radio" id="tam" name="campo" value="tam" onclick="enableText()">
             <label class="form-check-label" for="tam">Tamaño</label>
-            <input class="form-control" type="text" id="dato" name="dato" value="">
+            <input class="form-control" type="text" id="tam" name="dato" value="" disabled>
           </div>
-          <div class="form-group col-4 m-3">
-            <input class="form-check-input" type="radio" id="esCarnivoro" name="campo" value="esCarnivoro">
+          <div class="form-group col-5 m-3">
+            <input class="form-check-input" type="radio" id="esCarnivoro" name="campo" value="esCarnivoro" onclick="enableText()">
             <label class="form-check-label" for="esCarnivoro">Carnivoro</label>
-            <input class="form-control" type="text" id="dato" name="dato" value="">
+            <select class="form-control" id="esCarnivoro" name="dato" disabled >
+              <option value="false">falso</option>
+              <option value="true">verdadero</option>
+            </select>
           </div>
-          <div class="form-group col-4 m-3">
-            <input class="form-check-input" type="radio" id="color" name="campo" value="color">
+          <div class="form-group col-5 m-3">
+            <input class="form-check-input" type="radio" id="color" name="campo" value="color" onclick="enableText()">
             <label class="form-check-label" for="color">Color</label>
-            <input class="form-control" type="text" id="dato" name="dato" value="">
+            <input class="form-control" type="text" id="color" name="dato" value="" disabled>
           </div>
-          <div class="form-group col-4 m-3">
-            <input class="form-check-input" type="radio" id="numPatas" name="campo" value="numPatas">
+          <div class="form-group col-5 m-3">
+            <input class="form-check-input" type="radio" id="numPatas" name="campo" value="numPatas" onclick="enableText()">
             <label class="form-check-label" for="numPatas">Numero de patas</label>
-            <input class="form-control" type="text" id="dato" name="dato" value="">
+            <input class="form-control" type="text" id="numPatas" name="dato" value="" disabled>
           </div>
         </div>
         <input type="submit" class="btn btn-primary btn-lg" name="submit" value="actualizar">
