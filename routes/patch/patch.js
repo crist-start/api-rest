@@ -8,7 +8,7 @@ router.patch('/',function (req,res,next) {
 router.patch('/:id',function (req,res,next) {
   campo={};
   campo[req.body.campo]=req.body.dato;
-  dino.findOneAndUpdate({id:req.params.id},campo,{new:true},function (err,dato) {
+  dino.findOneAndUpdate({_id:req.params.id},campo,{new:true},function (err,dato) {
     if(dato==null){
       res.status(404).json({mensaje:"dato no encontrado"});
     }else{
