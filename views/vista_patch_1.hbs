@@ -21,7 +21,7 @@
       <h1>Actualizar dinosaurio {{nombre}}</h1>
       * solo se puede cambiar un campo
     </div>
-    <form class="p-5" name="formUpdate" action="http://localhost:3000/update/{{_id}}?_method=PATCH" method="POST">
+    <form class="p-5" name="formUpdate" action="/update/{{_id}}?_method=PATCH" method="POST">
       <div class="form-group px-5">
         <input type="text" class="form-control" id="nombre" name="dato" value="{{nombre}}" disabled>
         <input type="radio" id="r1" name="campo" value="nombre" onclick="enableText()" required>nombre
