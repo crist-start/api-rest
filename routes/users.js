@@ -110,6 +110,7 @@ router.post('/dinos', (req, res) => {
 
         res.json({
             ok: true,
+            dinosaurio: 'creado',
             usuario: dinosaurioDB
 
 
